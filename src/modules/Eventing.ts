@@ -4,18 +4,19 @@ export class Eventing {
   public events: { [key: string]: Callback[] } = {};
 
   on(eventName: string, callback: Callback): void {
-    const callbacks = this.events[eventName] || [];
-    this.events[eventName] = callbacks;
+    const handlers = this.events[eventName] || [];
+    handlers.push(callback);
+    this.events[eventName] = handlers;
   }
 
   trigger(eventName: string): void {
-    const callbacks = this.events[eventName];
+    const handlers = this.events[eventName];
 
-    if (!callbacks || callbacks.length === 0) {
+    if (!handlers || handlers.length === 0) {
       return
     }
 
-    callbacks.forEach(callback => {
+    handlers.forEach(callback => {
       callback();
     })
   }
