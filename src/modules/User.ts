@@ -37,11 +37,11 @@ export class User {
    * 
    */
   get on() {
-    return this.event.on;
+    return this.event.on.bind(this.event);
   }
 
   get trigger() {
-    return this.event.trigger;
+    return this.event.trigger.bind(this.event);
   }
   
   get get() {
@@ -67,6 +67,16 @@ export class User {
     this.sync.fetch(id)
       .then((response: AxiosResponse): void => {
         this.set(response.data);
+      })
+  }
+
+  save(): void {
+    this.sync.save(this.attributes.getAll())
+      .then((response: AxiosResponse): void => {
+        this.trigger('save');
+      })
+      .catch(() => {
+        this.trigger('error');
       })
   }
 }
