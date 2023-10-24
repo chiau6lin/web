@@ -18,4 +18,44 @@ export class User {
   constructor(attrs: UserProps) {
     this.attributes = new Attributes<UserProps>(attrs);
   }
+
+  /**
+   * refactor #1
+   * 
+   *    on(eventName: string, callback: Callback): void {
+   *      this.event.on(eventName, callback);
+   *    }
+   * 
+   * => But when Eventing funtion signature change,
+   * also need modify this. and other reson is also we need to call like this:
+   *
+   *    user.sync.save();
+   *    user.event.on(); 
+   * 
+   * So using `Getter accessors` 
+   * 
+   */
+  get on() {
+    return this.event.on;
+  }
+
+  get trigger() {
+    return this.event.trigger;
+  }
+  
+  get get() {
+    // console.log(user.get("name"));
+    // error ! root cause: `this`
+    // return this.attributes.get;
+
+    return this.attributes.get.bind(this.attributes);
+  }
+
+  
+
+
+
+
+
+
 }
