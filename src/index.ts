@@ -1,30 +1,10 @@
 import { User } from "./modules/User";
+import { UserEdit } from "./views/UserEdit";
 
-const user = new User({
-  id: 1
-});
+const userEdit = new UserEdit(
+  document.getElementById('root') as HTMLElement,
+  User.buildUser({name: "John", age: 20})
+);
 
-
-/**
- * user.attributes.get('id');
- * user.attributes.get('name');
- * user.attributes.get('age');
- * user.sync.save();
- *  
- * refactor #1
- * user.save();
- */
-// const on = user.on;
-// on("change", () => {});
-
-// also can call this way
-// user.on("change", () => {})
-
-
-user.on("change", () => {
-  console.log('changed', user)
-})
-
-user.fetch()
-
+userEdit.render();
 
