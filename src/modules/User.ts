@@ -3,7 +3,7 @@ import { Eventing } from "./Eventing";
 import { ApiSync } from "./ApiSync";
 import { Model } from "./Model";
 
-interface UserProps {
+export interface UserProps {
   id?: number;
   name?: string;
   age?: number;
@@ -18,5 +18,11 @@ export class User extends Model<UserProps> {
       new Eventing(),
       new ApiSync<UserProps>(rootUrl)
     )
+  }
+
+  setRandomAge(): void {
+    const age = Math.round(Math.random() * 100);
+    this.set({ age });
+
   }
 }
