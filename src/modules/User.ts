@@ -4,8 +4,8 @@ import { Sync } from "./Sync";
 
 interface UserProps {
   id?: number;
-  name: string;
-  age: number;
+  name?: string;
+  age?: number;
 }
 
 const rootUrl = 'http://localhost:3000/users';
@@ -50,12 +50,4 @@ export class User {
 
     return this.attributes.get.bind(this.attributes);
   }
-
-  
-
-
-
-
-
-
 }
