@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:parcel": "npx parcel index.js",
-    "start:json-server": "json-server -w db.json",
+    "start:parcel": "npx parcel index.html",
+    "start:db": "json-server -w db.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
     "axios": "^1.5.1"
   },
   "devDependencies": {
+    "buffer": "^6.0.3",
     "json-server": "^0.17.4"
   }
 }
