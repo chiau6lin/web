@@ -1,4 +1,4 @@
-export class Attributes<T> {
+export class Attributes<T extends object> {
   constructor(public data: T) {}
 
   get<K extends keyof T>(key: K): T[K] { // instead of => number | string | boolean 

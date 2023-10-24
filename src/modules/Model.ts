@@ -16,7 +16,7 @@ interface Events {
   trigger(eventName: string): void;
 }
 
-interface HasId {
+export interface HasId {
   id?: number;
 }
 
@@ -43,13 +43,15 @@ export class Model<T extends HasId> {
    * So using `Getter accessors` 
    * 
    */
-   get on() {
+  get on() {
     return this.events.on.bind(this.events);
   }
+  // on = this.events.on;
 
   get trigger() {
     return this.events.trigger.bind(this.events);
   }
+  // trigger = this.events.trigger;
   
   get get() {
     // console.log(user.get("name"));
@@ -58,6 +60,7 @@ export class Model<T extends HasId> {
 
     return this.attributes.get.bind(this.attributes);
   }
+  // get = this.attributes.get;
 
   set(update: T): void {
     this.attributes.set(update);
