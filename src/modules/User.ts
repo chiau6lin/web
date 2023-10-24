@@ -50,17 +50,4 @@ export class User {
 
     return this.attributes.get.bind(this.attributes);
   }
-
-  set(update: UserProps): void {
-    this.attributes.set(update);
-    this.event.trigger('change');
-  }
-
-  
-
-
-
-
-
-
 }

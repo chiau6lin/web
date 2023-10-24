@@ -15,14 +15,10 @@ const user = new User({
  * refactor #1
  * user.save();
  */
+
 // const on = user.on;
 // on("change", () => {});
 
 // also can call this way
 // user.on("change", () => {})
 
-
-user.on("change", () => {
-  console.log('changed')
-})
-user.set({ name: "John"});
